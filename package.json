@@ -1,0 +1,19 @@
+{
+  "name": "purescript-node-datagram",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf output && rimraf .pulp-cache",
+    "build": "jshint src && jscs src && pulp build -- --censor-lib --strict",
+    "test": "pulp test"
+  },
+  "author": "Brandon Hamilton",
+  "license": "MIT",
+  "devDependencies": {
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.4",
+    "pulp": "^10.0.0",
+    "purescript": "^0.10.3",
+    "purescript-psa": "^0.4.0",
+    "rimraf": "^2.5.4"
+  }
+}

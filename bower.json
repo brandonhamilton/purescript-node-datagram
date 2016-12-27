@@ -1,0 +1,29 @@
+{
+  "name": "purescript-node-datagram",
+  "description": "A PureScript wrapper for Node's UDP/Datagram APIs",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/brandonhamilton/purescript-node-datagram.git"
+  },
+  "authors": [
+    "Brandon Hamilton <brandon.hamilton@gmail.com>"
+  ],
+  "dependencies": {
+    "purescript-prelude": "~2.1.0",    
+    "purescript-exceptions": "~2.0.0",
+    "purescript-node-buffer": "~2.0.0",
+    "purescript-nullable": "~2.0.0"
+  },
+  "devDependencies": {
+    "purescript-console": "~2.0.0",
+    "purescript-psci-support": "~2.0.0",
+    "purescript-assert": "~2.0.0"
+  }
+}
