@@ -34,7 +34,7 @@ module Node.Datagram
 
 import Prelude
 
-import Control.Monad.Eff (Eff)
+import Control.Monad.Eff (Eff, kind Effect)
 import Control.Monad.Eff.Exception (Error())
 
 import Data.Nullable (Nullable, toNullable)
@@ -44,11 +44,11 @@ import Node.Buffer (Buffer)
 
 -- | The type of a Datagram socket object
 
-foreign import data Socket :: *
+foreign import data Socket :: Type
 
 -- | The effect associated with using the Datagram module.
 
-foreign import data DATAGRAM :: !
+foreign import data DATAGRAM :: Effect
 
 -- | Type of Datagram socket
 data SocketType = UDPv4 | UDPv6

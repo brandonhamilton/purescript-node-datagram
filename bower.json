@@ -16,14 +16,14 @@
     "Brandon Hamilton <brandon.hamilton@gmail.com>"
   ],
   "dependencies": {
-    "purescript-prelude": "~2.1.0",    
-    "purescript-exceptions": "~2.0.0",
-    "purescript-node-buffer": "~2.0.0",
-    "purescript-nullable": "~2.0.0"
+    "purescript-prelude": "~3.0.0",
+    "purescript-exceptions": "~3.0.0",
+    "purescript-node-buffer": "~3.0.0",
+    "purescript-nullable": "~3.0.0"
   },
   "devDependencies": {
-    "purescript-console": "~2.0.0",
-    "purescript-psci-support": "~2.0.0",
-    "purescript-assert": "~2.0.0"
+    "purescript-console": "~3.0.0",
+    "purescript-psci-support": "~3.0.0",
+    "purescript-assert": "~3.0.0"
   }
 }
