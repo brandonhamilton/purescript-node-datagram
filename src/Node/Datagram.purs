@@ -1,6 +1,6 @@
 -- | This module defines low-level bindings to the Node dgram module.
 
-module Node.Datagram 
+module Node.Datagram
   ( Socket
 
   , SocketType(..)
@@ -17,7 +17,7 @@ module Node.Datagram
   , onListening
   , onClose
   , onError
-  
+
   , address
   , setBroadcast
   , setMulticastLoopback

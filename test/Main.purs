@@ -2,24 +2,22 @@ module Test.Main where
 
 import Prelude
 
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE, log)
+import Effect (Effect)
+import Effect.Console (log)
 
 import Data.Maybe (Maybe(..))
 
-import Test.Assert (ASSERT, assert)
+import Test.Assert (assert)
 
-import Node.Buffer (BUFFER, size, toString)
+import Node.Buffer (size, toString)
 import Node.Encoding (Encoding(UTF8))
 
-import Node.Datagram (DATAGRAM, SocketType(..), createSocket, bindSocket, onListening, onClose, onMessage, send, sendString, address, close)
+import Node.Datagram (SocketType(..), createSocket, bindSocket, onListening, onClose, onMessage, send, sendString, address, close)
 
-type TestEff = Eff (dgram :: DATAGRAM, console :: CONSOLE, buffer :: BUFFER, assert :: ASSERT) Unit
-
-runServer :: TestEff
+runServer :: Effect Unit
 runServer = do
   server <- createSocket UDPv4 Nothing
-  
+
   onListening server $ do
     addr <- address server
     log $ "Server listening on " <> addr.address <> " : " <> (show addr.port)
@@ -35,7 +33,7 @@ runServer = do
 
   bindSocket server Nothing Nothing
 
-runClient :: Int -> String -> TestEff
+runClient :: Int -> String -> Effect Unit
 runClient serverPort serverAddr = do
   client <- createSocket UDPv4 Nothing
 
@@ -45,12 +43,12 @@ runClient serverPort serverAddr = do
     recvMsgStr <- toString UTF8 recvMsg
     len <- size recvMsg
     log $ "[CLIENT] Received " <> (show len) <> " bytes from " <> from.address <> ":" <> (show from.port) <> " - " <> recvMsgStr
-    assert $ sentMessage == recvMsgStr 
+    assert $ sentMessage == recvMsgStr
     close client
-    
+
   onClose client $ log "[CLIENT] Socket closed"
 
   sendString client sentMessage serverPort serverAddr Nothing
 
-main :: TestEff
+main :: Effect Unit
 main = runServer
