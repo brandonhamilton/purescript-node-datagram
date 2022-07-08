@@ -1,6 +1,6 @@
 "use strict";
 
-var dgram = require("dgram");
+import dgram from "dgram";
 
 exports.createSocketImpl = function (type) {
   return function (reuseAddr) {
