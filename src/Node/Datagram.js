@@ -2,7 +2,7 @@
 
 import dgram from "dgram";
 
-exports.createSocketImpl = function (type) {
+export function createSocketImpl (type) {
   return function (reuseAddr) {
     return function () {
       if (reuseAddr == null) {
@@ -14,7 +14,7 @@ exports.createSocketImpl = function (type) {
   };
 };
 
-exports.bindImpl = function (socket) {
+export function bindImpl (socket) {
   return function (port) {
     return function (address) {
       return function () {
@@ -24,7 +24,7 @@ exports.bindImpl = function (socket) {
   };
 };
 
-exports.onMessage = function (socket) {
+export function onMessage (socket) {
   return function (callback) {
     return function () {
       socket.on("message", function (msg, from) {
@@ -34,7 +34,7 @@ exports.onMessage = function (socket) {
   };
 };
 
-exports.onListening = function (socket) {
+export function onListening (socket) {
   return function (callback) {
     return function () {
       socket.on("listening", callback);
@@ -42,7 +42,7 @@ exports.onListening = function (socket) {
   };
 };
 
-exports.onClose = function (socket) {
+export function onClose (socket) {
   return function (callback) {
     return function () {
       socket.on("close", callback);
@@ -50,7 +50,7 @@ exports.onClose = function (socket) {
   };
 };
 
-exports.onError = function onError (socket) {
+export function onError (socket) {
   return function (callback) {
     return function () {
       socket.on("error", function (err) {
@@ -60,13 +60,13 @@ exports.onError = function onError (socket) {
   };
 };
 
-exports.address = function (socket) {
+export function address (socket) {
   return function () {
     return socket.address();
   };
 };
 
-exports.sendImpl = function (socket) {
+export function sendImpl (socket) {
   return function (msg) {
     return function (offset) {
       return function (length) {
@@ -88,7 +88,7 @@ exports.sendImpl = function (socket) {
   };
 };
 
-exports.sendStringImpl = function (socket) {
+export function sendStringImpl (socket) {
   return function (msg) {
     return function (port) {
       return function (address) {
@@ -102,13 +102,13 @@ exports.sendStringImpl = function (socket) {
   };
 };
 
-exports.close = function (socket) {
+export function close (socket) {
   return function () {
     return socket.close();
   };
 };
 
-exports.setBroadcast = function (socket) {
+export function setBroadcast (socket) {
   return function (flag) {
     return function () {
       return socket.setBroadcast(flag);
@@ -116,7 +116,7 @@ exports.setBroadcast = function (socket) {
   };
 };
 
-exports.setMulticastLoopback = function (socket) {
+export function setMulticastLoopback (socket) {
   return function (flag) {
     return function () {
       return socket.setMulticastLoopback(flag);
@@ -124,7 +124,7 @@ exports.setMulticastLoopback = function (socket) {
   };
 };
 
-exports.setTTL = function (socket) {
+export function setTTL (socket) {
   return function (ttl) {
     return function () {
       return socket.setTTL(ttl);
@@ -132,7 +132,7 @@ exports.setTTL = function (socket) {
   };
 };
 
-exports.setMulticastTTL = function (socket) {
+export function setMulticastTTL (socket) {
   return function (ttl) {
     return function () {
       return socket.setMulticastTTL(ttl);
@@ -140,7 +140,7 @@ exports.setMulticastTTL = function (socket) {
   };
 };
 
-exports.addMembershipImpl = function (socket) {
+export function addMembershipImpl (socket) {
   return function (multicastAddress) {
     return function (multicastInterface) {
       return function () {
@@ -150,7 +150,7 @@ exports.addMembershipImpl = function (socket) {
   };
 };
 
-exports.dropMembershipImpl = function (socket) {
+export function dropMembershipImpl (socket) {
   return function (multicastAddress) {
     return function (multicastInterface) {
       return function () {
@@ -160,13 +160,13 @@ exports.dropMembershipImpl = function (socket) {
   };
 };
 
-exports.ref = function (socket) {
+export function ref (socket) {
   return function () {
     return socket.ref();
   };
 };
 
-exports.unref = function (socket) {
+export function unref (socket) {
   return function () {
     return socket.ref();
   };
